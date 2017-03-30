@@ -18,7 +18,7 @@ $(TALK)_withnotes.pdf: DerivedFiles/$(TALK)_withnotes.tex Stuff/header.tex Figs/
 	mv DerivedFiles/$(TALK)_withnotes-nup.pdf $(TALK)_withnotes.pdf
 	rm DerivedFiles/$(TALK)_withnotes.pdf
 
-DerivedFiles/$(TALK)_withnotes.tex: $(TALK).tex Stuff/Ruby/createVersionWithNotes.rb
+DerivedFiles/$(TALK)_withnotes.tex: DerivedFiles/$(TALK).tex Stuff/Ruby/createVersionWithNotes.rb
 	Stuff/Ruby/createVersionWithNotes.rb DerivedFiles/$(TALK).tex DerivedFiles/$(TALK)_withnotes.tex
 
 Figs/data_fig.png: R/data_fig.R
