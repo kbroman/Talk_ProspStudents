@@ -2,7 +2,7 @@ TALK = introQTL
 
 all: $(TALK).pdf notes
 
-$(TALK).pdf: DerivedFiles/$(TALK).tex Stuff/header.tex Figs/data_fig.png
+$(TALK).pdf: DerivedFiles/$(TALK).tex Stuff/header.tex Figs/data_fig.png Figs/ail.pdf Figs/hs.pdf
 	cd DerivedFiles;xelatex $(TALK)
 	mv DerivedFiles/$(TALK).pdf $(TALK).pdf
 
@@ -12,7 +12,7 @@ pdf: $(TALK).pdf notes
 DerivedFiles/$(TALK).tex: $(TALK).tex
 	cp $< $@
 
-$(TALK)_withnotes.pdf: DerivedFiles/$(TALK)_withnotes.tex Stuff/header.tex Figs/data_fig.png
+$(TALK)_withnotes.pdf: DerivedFiles/$(TALK)_withnotes.tex Stuff/header.tex Figs/data_fig.png Figs/ail.pdf Figs/hs.pdf
 	cd DerivedFiles;xelatex $(TALK)_withnotes
 	cd DerivedFiles;pdfnup $(TALK)_withnotes.pdf --nup 1x2 --no-landscape --paper letterpaper --frame true --scale 0.9
 	mv DerivedFiles/$(TALK)_withnotes-nup.pdf $(TALK)_withnotes.pdf
@@ -22,7 +22,13 @@ DerivedFiles/$(TALK)_withnotes.tex: DerivedFiles/$(TALK).tex Stuff/Ruby/createVe
 	Stuff/Ruby/createVersionWithNotes.rb DerivedFiles/$(TALK).tex DerivedFiles/$(TALK)_withnotes.tex
 
 Figs/data_fig.png: R/data_fig.R
-	cd R;R CMD BATCH $<
+	cd R;R CMD BATCH $(<F)
+
+Figs/ail.pdf: R/ail_fig.R
+	cd R;R CMD BATCH $(<F)
+
+Figs/hs.pdf: R/hs_fig.R
+	cd R;R CMD BATCH $(<F)
 
 web: $(TALK).pdf $(TALK)_withnotes.pdf
 	scp $(TALK).pdf $(TALK)_withnotes.pdf broman-10.biostat.wisc.edu:Website/presentations/ProspStudents2017-03/
