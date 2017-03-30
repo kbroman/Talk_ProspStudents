@@ -12,7 +12,7 @@ f2g$pheno <- cbind(f2g$pheno, insulin=phe[id$second,2])
 
 layout(cbind(1,2), width=c(1,0.2))
 
-color <- brocolors("crayons")[c("White", "Cornflower", "Dandelion", "Blush")]
+color <- broman::brocolors("crayons")[c("White", "Cornflower", "Dandelion", "Blush")]
 par(mar=c(5.1,4.1,3.6,0.6))
 geno.image(f2g, col=color, main="", ylab="Mice", reorder=nphe(f2g))
 
