@@ -1,8 +1,7 @@
 ## Talk on &ldquo;Complex trait genetics in mice&rdquo;
 
-These are slides for a talk that I gave to prospective graduate students
-31 March
-2017.
+These are slides for a talk that I gave to prospective graduate
+students 31 March 2017.
 
 Slides and interactive graphs online at [bit.ly/BMI2017-03](http://bit.ly/BMI2017-03).
 
