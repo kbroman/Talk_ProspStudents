@@ -26,3 +26,6 @@ Figs/data_fig.png: R/data_fig.R
 
 web: $(TALK).pdf $(TALK)_withnotes.pdf
 	scp $(TALK).pdf $(TALK)_withnotes.pdf broman-10.biostat.wisc.edu:Website/presentations/ProspStudents2017-03/
+
+clean:
+	rm DerivedFiles/*.*
