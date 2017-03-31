@@ -1,6 +1,6 @@
 # image of genotypes + phenotypes
 
-png("../Figs/data_fig.png", height=1000, width=1500, pointsize=18)
+png("../Figs/data_fig.png", height=1000, width=1500, pointsize=28)
 
 load("~/Projects/Attie/GoldStandard/FinalData/aligned_geno_with_pmap.RData")
 load("~/Projects/Attie/GoldStandard/FinalData/lipomics_final_rev2.RData")
@@ -14,7 +14,10 @@ layout(cbind(1,2), width=c(1,0.2))
 
 color <- broman::brocolors("crayons")[c("White", "Cornflower", "Dandelion", "Blush")]
 par(mar=c(5.1,4.1,3.6,0.6))
+names(f2g$geno)[20] <- ""
 geno.image(f2g, col=color, main="", ylab="Mice", reorder=nphe(f2g))
+u <- par("usr")
+axis(side=3, at=u[2], labels="X", xpd=TRUE, line=-0.5)
 
 y <- log10( f2g$pheno$insulin[order(f2g$pheno$insulin)] )
 grayplot(y, seq_along(y), xlab="log10 insulin", ylab="Mice", bgcolor="gray90",
